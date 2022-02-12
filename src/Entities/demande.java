@@ -6,15 +6,16 @@
 package Entities;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 /**
  *
  * @author hamza
  */
-public class demande {
+public class demande  {
     String id_demande;
     int num_demande;
-    Date date_demande;
+    LocalDateTime date_demande;
     String type_demande;
     String id_service;
     String id_citoyen;  
@@ -24,7 +25,7 @@ public class demande {
         return "demande{" + "id_demande=" + id_demande + ", num_demande=" + num_demande + ", date_demande=" + date_demande + ", type_demande=" + type_demande + ", id_service=" + id_service + ", id_citoyen=" + id_citoyen + '}';
     }
 
-    public demande(String id_demande, int num_demande, Date date_demande, String type_demande, String id_service, String id_citoyen) {
+    public demande(String id_demande, int num_demande, LocalDateTime date_demande, String type_demande, String id_service, String id_citoyen) {
         this.id_demande = id_demande;
         this.num_demande = num_demande;
         this.date_demande = date_demande;
@@ -41,7 +42,7 @@ public class demande {
         this.num_demande = num_demande;
     }
 
-    public void setDate_demande(Date date_demande) {
+    public void setDate_demande(LocalDateTime date_demande) {
         this.date_demande = date_demande;
     }
 
@@ -65,7 +66,7 @@ public class demande {
         return num_demande;
     }
 
-    public Date getDate_demande() {
+    public LocalDateTime getDate_demande() {
         return date_demande;
     }
 
@@ -80,7 +81,7 @@ public class demande {
     public String getId_citoyen() {
         return id_citoyen;
     }
-    
+     
 }
  
-
+ 

@@ -5,6 +5,7 @@
  */
 package Utils;
 
+import Entities.demande;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,13 +15,7 @@ import java.sql.SQLException;
  */
 public class DBConnexion {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        Connection cnx=connecterDB();
-    }
+    
     public static Connection connecterDB(){
         try{
         Class.forName("com.mysql.jdbc.Driver");
