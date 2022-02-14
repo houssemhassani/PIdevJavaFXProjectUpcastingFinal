@@ -31,10 +31,9 @@ Date now = new Date();
         DateFormat dateFormatYMD = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
         String vDateYMD = dateFormatYMD.format(now);
-       // gererdemande.ajouterdemande(5, "hhh",  vDateYMD, 4, 45);
-        gererdemande.modifierdemande(6, "hhh", vDateYMD, 20, 35);
-    
-        //gererdemande.supprimerdemande(5, "hhh",  vDateYMD, 4, 45);
+      //gererdemande.ajouterdemande(6, "hhhk",  vDateYMD, 6, 46);
+    gererdemande.modifierdemande(6, "hhh");
+       // gererdemande.supprimerdemande(6);
     }
     
     

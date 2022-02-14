@@ -24,6 +24,7 @@ import java.time.LocalDateTime;
 public class gererdemande {
     private static Connection cnx=DBConnexion.connecterDB();
 
+    
     public gererdemande() {
     }
     
@@ -58,7 +59,7 @@ public class gererdemande {
     }
    
     
-   public static void modifierdemande(int num_demande,String type_demande,String date_demande,int id_service,int id_citoyen)
+   public static void modifierdemande(int num_demande,String type_demande)
     {
         PreparedStatement select;
         ResultSet resultat;
@@ -68,16 +69,11 @@ public class gererdemande {
             resultat=select.executeQuery();
             if(resultat.isBeforeFirst())
             {
-                update=cnx.prepareStatement("Update demande set num_demande=? where num_demande=?" );
-                update.setInt(1,num_demande);
-                
-                java.sql.Date date = new java.sql.Date(0000-00-00);
-                update.setDate(2,new java.sql.Date(22, 02, 12));
-                update.setString(3, type_demande);
-                update.setInt(4, id_service);
-                update.setInt(5, id_citoyen);
-                
-                
+                update=cnx.prepareStatement("Update demande set type_demande=? where num_demande=?" );
+                update.setInt(2,num_demande);
+                update.setString(1,type_demande);
+           
+               ;
                 
                 update.executeUpdate();
                 System.out.println("modification terminée avec succes");
@@ -91,7 +87,7 @@ public class gererdemande {
    
    
    
-     public static void supprimerdemande(int num_demande,String type_demande,String date_demande,int id_service,int id_citoyen)
+     public static void supprimerdemande(int num_demande)
     {
         PreparedStatement select;
         ResultSet resultat;

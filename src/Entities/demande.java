@@ -25,8 +25,8 @@ public class demande  {
         return "demande{" + "id_demande=" + id_demande + ", num_demande=" + num_demande + ", date_demande=" + date_demande + ", type_demande=" + type_demande + ", id_service=" + id_service + ", id_citoyen=" + id_citoyen + '}';
     }
 
-    public demande(String id_demande, int num_demande, LocalDateTime date_demande, String type_demande, String id_service, String id_citoyen) {
-        this.id_demande = id_demande;
+    public demande(int num_demande, LocalDateTime date_demande, String type_demande, String id_service, String id_citoyen) {
+       
         this.num_demande = num_demande;
         this.date_demande = date_demande;
         this.type_demande = type_demande;
@@ -34,9 +34,7 @@ public class demande  {
         this.id_citoyen = id_citoyen;
     }
 
-    public void setId_demande(String id_demande) {
-        this.id_demande = id_demande;
-    }
+   
 
     public void setNum_demande(int num_demande) {
         this.num_demande = num_demande;
