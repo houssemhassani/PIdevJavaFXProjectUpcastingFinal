@@ -10,18 +10,28 @@ package services;
  * @author hamza
  */
 
+import Entities.demande;
 import Utils.DBConnexion;
 import java.sql.Connection;
 import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
-public class gererdemande {
+public class gererdemande implements gestiondemande {
+    
+    private Connection conn;
+    private Statement ste;
+    private PreparedStatement pste;
     private static Connection cnx=DBConnexion.connecterDB();
 
     
@@ -110,14 +120,71 @@ public class gererdemande {
     }
    
    
+      
+    public List<demande> afficher() {
+        List<demande> personnes = new ArrayList<>();
+        String req = "SELECT * FROM `demande`";
+        
+        try {
+//            pste = conn.prepareStatement(req);
+//            ResultSet rs = pste.executeQuery();
+            Statement 
+            ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery(req);
+            
+            while(rs.next()){
+                demande p = new demande();
+                p.setNum_demande(rs.getInt("num_demande"));
+                p.setType_demande(rs.getString(2));
+                //p.setDate_demande(rs.getDate(3));
+                  p.setId_citoyen(rs.getString(4));
+                    p.setId_service(rs.getString(5));
+                personnes.add(p);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(gererdemande.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return personnes;
+    }
+
+    @Override
+    public void ajouterdemande(demande p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modifierdemande(demande p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void supprimerdemande(demande p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    }
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+   
+  
+
    
    
    
    
    
-   
-   
-}
+
 
  
     

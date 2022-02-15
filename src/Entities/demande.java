@@ -20,6 +20,10 @@ public class demande  {
     String id_service;
     String id_citoyen;  
 
+    public demande() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     public String toString() {
         return "demande{" + "id_demande=" + id_demande + ", num_demande=" + num_demande + ", date_demande=" + date_demande + ", type_demande=" + type_demande + ", id_service=" + id_service + ", id_citoyen=" + id_citoyen + '}';
@@ -79,7 +83,5 @@ public class demande  {
     public String getId_citoyen() {
         return id_citoyen;
     }
-     
 }
- 
- 
+    

@@ -12,6 +12,7 @@ import java.util.Date;
 
 
 import services.gererdemande;
+import  services.gerernotification;
 
 /**
  *
@@ -31,9 +32,13 @@ Date now = new Date();
         DateFormat dateFormatYMD = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
         String vDateYMD = dateFormatYMD.format(now);
-      //gererdemande.ajouterdemande(6, "hhhk",  vDateYMD, 6, 46);
-    gererdemande.modifierdemande(6, "hhh");
-       // gererdemande.supprimerdemande(6);
+     //gererdemande.ajouterdemande(6, "bonjour",  vDateYMD, 6, 46);
+     //gererdemande.modifierdemande(6, "bonsoir");
+      // gererdemande.supprimerdemande(6);
+      
+      //gerernotification.ajouternotification(15, "facture", "hamzaabda09@gmail.com");
+      //gerernotification.modifiernotification(15, "paiment");
+      gerernotification.supprimerdemande(15);
     }
     
     

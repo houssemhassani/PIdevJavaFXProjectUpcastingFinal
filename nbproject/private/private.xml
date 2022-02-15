@@ -5,8 +5,9 @@
         <group>
             <file>file:/C:/Users/hamza/OneDrive/Documents/NetBeansProjects/pidev/src/Utils/DBConnexion.java</file>
             <file>file:/C:/Users/hamza/OneDrive/Documents/NetBeansProjects/pidev/src/Test/Test.java</file>
-            <file>file:/C:/Users/hamza/OneDrive/Documents/NetBeansProjects/pidev/src/Entities/demande.java</file>
             <file>file:/C:/Users/hamza/OneDrive/Documents/NetBeansProjects/pidev/src/services/gererdemande.java</file>
+            <file>file:/C:/Users/hamza/OneDrive/Documents/NetBeansProjects/pidev/src/services/gerernotification.java</file>
+            <file>file:/C:/Users/hamza/OneDrive/Documents/NetBeansProjects/pidev/src/Entities/notification.java</file>
         </group>
     </open-files>
 </project-private>
