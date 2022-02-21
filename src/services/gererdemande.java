@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 
 
 
-public class gererdemande implements gestiondemande {
+public class gererdemande  {
     
     private Connection conn;
     private Statement ste;
@@ -121,8 +121,8 @@ public class gererdemande implements gestiondemande {
    
    
       
-    public List<demande> afficher() {
-        List<demande> personnes = new ArrayList<>();
+    public static ArrayList<demande> afficher() {
+        ArrayList<demande> personnes = new ArrayList<>();
         String req = "SELECT * FROM `demande`";
         
         try {
@@ -135,10 +135,10 @@ public class gererdemande implements gestiondemande {
             while(rs.next()){
                 demande p = new demande();
                 p.setNum_demande(rs.getInt("num_demande"));
-                p.setType_demande(rs.getString(2));
-                //p.setDate_demande(rs.getDate(3));
-                  p.setId_citoyen(rs.getString(4));
-                    p.setId_service(rs.getString(5));
+                p.setType_demande(rs.getString("type"));
+                p.setDate_demande(rs.getString("date"));
+                  p.setId_citoyen(rs.getInt("id_citoyen"));
+                    p.setId_service(rs.getInt("id_service"));
                 personnes.add(p);
             }
             
@@ -149,20 +149,7 @@ public class gererdemande implements gestiondemande {
         return personnes;
     }
 
-    @Override
-    public void ajouterdemande(demande p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void modifierdemande(demande p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void supprimerdemande(demande p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     
     }
      

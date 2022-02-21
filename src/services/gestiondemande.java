@@ -6,6 +6,7 @@
 package services;
 
 import Entities.demande;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,8 +14,8 @@ import java.util.List;
  * @author hamza
  */
 public interface gestiondemande {
-    void ajouterdemande(demande p);
-    void modifierdemande(demande p);
-    void supprimerdemande(demande p);
-    List<demande> afficher();
+   /*static void ajouterdemande(demande p);
+    static void modifierdemande(demande p);
+    static void supprimerdemande(demande p);
+    static ArrayList<demande> afficher();*/
 }

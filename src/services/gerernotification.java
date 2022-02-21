@@ -76,7 +76,9 @@ public class gerernotification {
     }
    
    
-   
+     
+     
+     
    
    
      public static void supprimerdemande(int num_notification)
@@ -102,5 +104,18 @@ public class gerernotification {
     }
       
   
+     
+    }
    
-}
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+   
+
