@@ -4,11 +4,17 @@
  * and open the template in the editor.
  */
 package services;
+import Entities.demande;
+import Entities.notification;
 import Utils.DBConnexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -103,7 +109,32 @@ public class gerernotification {
         
     }
       
-  
+   public static ArrayList<notification> afficher() {
+        ArrayList<notification> notifications = new ArrayList<>();
+        String req = "SELECT * FROM `notification`";
+        
+        try {
+  //   pste = conn.prepareStatement(req);
+  //            ResultSet rs = pste.executeQuery();
+            Statement 
+            ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery(req);
+            
+            while(rs.next()){
+                notification n = new notification();
+                n.setNum_notificatione(rs.getInt("num_notification"));
+                n.setType_notification(rs.getString("type"));
+                n.setEmail_notification(rs.getString("email"));
+                    
+                notifications.add(n);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(gererdemande.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return notifications;
+    }
      
     }
    

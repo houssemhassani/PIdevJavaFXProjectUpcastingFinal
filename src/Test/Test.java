@@ -6,6 +6,7 @@
 package Test;
 
 import Entities.demande;
+import Entities.notification;
 import Utils.DBConnexion;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -34,21 +35,35 @@ Date now = new Date();
         DateFormat dateFormatYMD = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
         String vDateYMD = dateFormatYMD.format(now);
-      //gererdemande.ajouterdemande(6, "bonjour",  vDateYMD, 6, 46);
+      //gererdemande.ajouterdemande(5, vDateYMD, vDateYMD, 5, 6);
      //gererdemande.modifierdemande(6, "bonsoir");
      // gererdemande.supprimerdemande(6);
       
       //gerernotification.ajouternotification(15, "facture", "hamzaabda09@gmail.com");
       //gerernotification.modifiernotification(15, "paiment");
      // gerernotification.supprimerdemande(15);
-     ArrayList<demande> e=gererdemande.afficher();
-        for (demande object : e) {
+
+          ArrayList<demande> e=gererdemande.afficher();
+       for (demande object : e) {
             System.out.println(object.toString());
             
-        }
+      }
     
+        ArrayList<notification> n=gerernotification.afficher();
+       for (notification object : n) {
+            System.out.println(object.toString());
+            
+      }
+       
+       
     }
+}    
+      
+        
+        
+        
+      
     
     
     
-}
+    
