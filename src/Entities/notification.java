@@ -10,7 +10,7 @@ package Entities;
  * @author hamza
  */
 public class notification {
-    String id_notification;
+    int id_notification;
     int num_notificatione;
     String type_notification;
     String email_notification;
@@ -19,8 +19,12 @@ public class notification {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public String getId_notification() {
+    public int getId_notification() {
         return id_notification;
+    }
+
+    public void setId_notification(int id_notification) {
+        this.id_notification = id_notification;
     }
 
     public int getNum_notificatione() {

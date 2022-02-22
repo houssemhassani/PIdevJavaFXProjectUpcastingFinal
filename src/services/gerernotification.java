@@ -122,6 +122,7 @@ public class gerernotification {
             
             while(rs.next()){
                 notification n = new notification();
+                n.setId_notification(rs.getInt("id"));
                 n.setNum_notificatione(rs.getInt("num_notification"));
                 n.setType_notification(rs.getString("type"));
                 n.setEmail_notification(rs.getString("email"));

@@ -134,6 +134,7 @@ public class gererdemande  {
             
             while(rs.next()){
                 demande p = new demande();
+                p.setId_demande(rs.getInt("ID"));
                 p.setNum_demande(rs.getInt("num_demande"));
                 p.setType_demande(rs.getString("type"));
                 p.setDate_demande(rs.getString("date"));

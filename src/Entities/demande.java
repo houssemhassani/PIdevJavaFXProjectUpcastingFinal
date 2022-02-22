@@ -38,6 +38,10 @@ public class demande  {
         this.id_citoyen = id_citoyen;
     }
 
+    public void setId_demande(int id_demande) {
+        this.id_demande = id_demande;
+    }
+
    
 
     public void setNum_demande(int num_demande) {
