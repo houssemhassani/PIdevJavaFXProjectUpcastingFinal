@@ -14,6 +14,31 @@ public class notification {
     int num_notificatione;
     String type_notification;
     String email_notification;
+    int id_demande ;
+    String demande;
+
+    public int getId_demande() {
+        return id_demande;
+    }
+
+    public notification(int id_notification, int num_notificatione, String type_notification, String email_notification, int id_demande) {
+        this.id_notification = id_notification;
+        this.num_notificatione = num_notificatione;
+        this.type_notification = type_notification;
+        this.email_notification = email_notification;
+        this.id_demande = id_demande;
+    }
+
+    public void setId_demande(int id_demande) {
+        this.id_demande = id_demande;
+    }
+
+    public notification(int id_notification, int num_notificatione, String type_notification, String email_notification) {
+        this.id_notification = id_notification;
+        this.num_notificatione = num_notificatione;
+        this.type_notification = type_notification;
+        this.email_notification = email_notification;
+    }
 
     public notification() {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -51,16 +76,22 @@ public class notification {
         this.email_notification = email_notification;
     }
 
-    public notification(int num_notificatione, String type_notification, String email_notification) {
-        this.num_notificatione = num_notificatione;
-        this.type_notification = type_notification;
-        this.email_notification = email_notification;
-    }
-
     @Override
     public String toString() {
-        return "notification{" + "id_notification=" + id_notification + ", num_notificatione=" + num_notificatione + ", type_notification=" + type_notification + ", email_notification=" + email_notification + '}';
+        return "notification{" + "num_notificatione=" + num_notificatione + ", type_notification=" + type_notification + ", email_notification=" + email_notification + ", demande=" + demande + '}';
     }
+
+    public String getDemande() {
+        return demande;
+    }
+
+    public void setDemande(String demande) {
+        this.demande = demande;
+    }
+
+    
+
+    
     
     
     

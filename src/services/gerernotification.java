@@ -111,7 +111,7 @@ public class gerernotification {
       
    public static ArrayList<notification> afficher() {
         ArrayList<notification> notifications = new ArrayList<>();
-        String req = "SELECT * FROM `notification`";
+        String req = "SELECT * FROM notification full join demande where id_demande=demande.ID";
         
         try {
   //   pste = conn.prepareStatement(req);
@@ -126,6 +126,7 @@ public class gerernotification {
                 n.setNum_notificatione(rs.getInt("num_notification"));
                 n.setType_notification(rs.getString("type"));
                 n.setEmail_notification(rs.getString("email"));
+                n.setDemande(rs.getString("type"));
                     
                 notifications.add(n);
             }
