@@ -8,6 +8,7 @@ package Test;
 import Entities.demande;
 import Entities.notification;
 import Utils.DBConnexion;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class Test {
      /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         
         DBConnexion.connecterDB();
         //Date aujourdhui = SystemClockFactory.getDatetime();
@@ -38,7 +39,7 @@ Date now = new Date();
       //gererdemande.ajouterdemande(5, vDateYMD, vDateYMD, 5, 6);
      //gererdemande.modifierdemande(6, "bonsoir");
      // gererdemande.supprimerdemande(6);
-      
+ 
       //gerernotification.ajouternotification(15, "facture", "hamzaabda09@gmail.com");
       //gerernotification.modifiernotification(15, "paiment");
      // gerernotification.supprimerdemande(15);
@@ -54,7 +55,10 @@ Date now = new Date();
             System.out.println(object.toString());
             
       }
-       
+      
+        System.out.println(gererdemande.Recherchedemande(8));
+     
+          
        
     }
     

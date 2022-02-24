@@ -27,8 +27,8 @@ import java.util.logging.Logger;
 
 
 
-public class gererdemande  {
-    
+public class gererdemande {
+
     private Connection conn;
     private Statement ste;
     private PreparedStatement pste;
@@ -118,8 +118,7 @@ public class gererdemande  {
         }
         
     }
-   
-   
+ 
       
     public static ArrayList<demande> afficher() {
         ArrayList<demande> personnes = new ArrayList<>();
@@ -150,9 +149,29 @@ public class gererdemande  {
         return personnes;
     }
 
-    
-    
+     public static List<demande> Recherchedemande(int num_demande) throws SQLException {
+      List<demande> demandes = new ArrayList<>();
+        String req = "select * from demande WHERE num_demande=" + num_demande;
+         Statement 
+            ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery(req);
+
+        while (rs.next()) {
+            demande d = new demande(
+                    rs.getInt("num_demande"),
+                    rs.getString("type"),
+                    rs.getString("date"),
+                    rs.getInt("id_citoyen"),
+                    rs.getInt("id_service")
+                    
+
+            );
+            demandes.add(d);
+        }
+        return demandes;
     }
+
+}
      
      
      
