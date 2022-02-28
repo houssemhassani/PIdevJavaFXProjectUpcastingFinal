@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="1106.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DemandeController">
+   <children>
+      <AnchorPane prefHeight="509.0" prefWidth="449.0" style="-fx-background-color: #03224C;">
+         <children>
+            <Label layoutX="14.0" layoutY="135.0" text="num_demande" textFill="#0cc21b" />
+            <TextField fx:id="tfNUM" layoutX="122.0" layoutY="130.0" prefHeight="30.0" prefWidth="140.0" />
+            <Label layoutX="15.0" layoutY="195.0" text="type_demande" textFill="#0cc21b" />
+            <TextField fx:id="tfTYPE" layoutX="122.0" layoutY="190.0" prefHeight="30.0" prefWidth="140.0" />
+            <Label layoutX="14.0" layoutY="260.0" text="date_demande" textFill="#0cc21b" />
+            <TextField fx:id="tfDATE" layoutX="122.0" layoutY="255.0" prefHeight="30.0" prefWidth="140.0" />
+            <Label layoutX="30.0" layoutY="320.0" text="id_citoyen" textFill="#0cc21b" />
+            <TextField fx:id="tfCITOYEN" layoutX="122.0" layoutY="315.0" prefHeight="30.0" prefWidth="140.0" />
+            <Label layoutX="32.0" layoutY="390.0" text="id_service" textFill="#0cc21b" />
+            <TextField fx:id="tfSERVICE" layoutX="122.0" layoutY="385.0" prefHeight="30.0" prefWidth="140.0" />
+            <Button fx:id="btnajouter" layoutX="30.0" layoutY="462.0" mnemonicParsing="false" onAction="#savedemande" onMouseClicked="#getSelected" text="ajouter" />
+            <Button fx:id="btnmodifier" layoutX="129.0" layoutY="462.0" mnemonicParsing="false" onAction="#Edit" text="modifier" />
+            <TextField fx:id="tfID" layoutX="122.0" layoutY="72.0" prefHeight="30.0" prefWidth="140.0" />
+            <Label layoutX="40.0" layoutY="77.0" text="id" textFill="#0cc21b" />
+            <Button fx:id="btnsupprimer" layoutX="233.0" layoutY="462.0" mnemonicParsing="false" onAction="#Delete" text="supprimer" />
+           
+         </children>
+      </AnchorPane>
+      <TableView fx:id="table_demande" layoutX="463.0" layoutY="128.0" onMouseClicked="#getSelected" prefHeight="200.0" prefWidth="550.0">
+        <columns>
+          <TableColumn fx:id="col_ID" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="col_numero" prefWidth="75.0" text="numero" />
+            <TableColumn fx:id="col_type" prefWidth="75.0" text="type" />
+            <TableColumn fx:id="col_date" prefWidth="117.0" text="date" />
+            <TableColumn fx:id="col_citoyen" prefWidth="90.0" text="citoyen" />
+            <TableColumn fx:id="col_service" prefWidth="85.0" text="service" />
+        </columns>
+      </TableView>
+      
+   </children>
+</AnchorPane>

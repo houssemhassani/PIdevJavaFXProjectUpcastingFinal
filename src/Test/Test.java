@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import services.gerercitoyen;
 
 
 import services.gererdemande;
@@ -44,21 +45,21 @@ Date now = new Date();
       //gerernotification.modifiernotification(15, "paiment");
      // gerernotification.supprimerdemande(15);
 
-          ArrayList<demande> e=gererdemande.afficher();
+        /*  ArrayList<demande> e=gererdemande.afficher();
        for (demande object : e) {
             System.out.println(object.toString());
             
-      }
+      }*/
     
-        ArrayList<notification> n=gerernotification.afficher();
+       /* ArrayList<notification> n=gerernotification.afficher();
        for (notification object : n) {
             System.out.println(object.toString());
             
-      }
+      }*/
       
-        System.out.println(gererdemande.Recherchedemande(8));
+        // System.out.println(gererdemande.Recherchedemande(8));
      
-          
+         // gerercitoyen.inscrire("hamza", "abda","hamzaabda09@gmail.com", "11401757", 26862373, "bizerte", vDateYMD, vDateYMD);
        
     }
     

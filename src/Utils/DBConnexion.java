@@ -9,7 +9,14 @@ import Entities.demande;
 import Entities.notification;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import services.gererdemande;
 /**
  *
  * @author hamza
@@ -36,4 +43,14 @@ public class DBConnexion {
         return null;
         }
     }
+
+   
 }
+    
+    
+    
+    
+    
+    
+    
+

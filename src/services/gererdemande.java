@@ -38,7 +38,7 @@ public class gererdemande {
     public gererdemande() {
     }
     
-   public static void ajouterdemande(int num_demande,String type_demande,String date_demande,int id_service,int id_citoyen)
+   public static void ajouterdemande(int num_demande,String type_demande,String date_demande,int id_citoyen,int id_service)
     {
         PreparedStatement select;
          ResultSet resultat;
@@ -48,13 +48,12 @@ public class gererdemande {
             resultat=select.executeQuery();
             if(!resultat.isBeforeFirst())
             {
-                insert=cnx.prepareStatement("INSERT INTO demande (num_demande,date_demande,type_demande,id_service,id_cityon) values (?,?,?,?,?)");
+                insert=cnx.prepareStatement("INSERT INTO demande (num_demande,type_demande,date_demande,id_service,id_citoyen) values (?,?,?,?,?)");
                 insert.setInt(1, num_demande);
-               java.sql.Date date = new java.sql.Date(0000-00-00);
-                insert.setDate(2,new java.sql.Date(22, 02, 12));
-                insert.setString(3, type_demande);
-                insert.setInt(4, id_service);
-                insert.setInt(5, id_citoyen);
+                 insert.setString(2, type_demande);  
+                insert.setString(3, date_demande);
+                insert.setInt(4, id_citoyen);
+                insert.setInt(5, id_service);
                 
                 
                 insert.executeUpdate();
@@ -97,7 +96,7 @@ public class gererdemande {
    
    
    
-     public static void supprimerdemande(int num_demande)
+     public static void supprimerdemande(int num_demande )
     {
         PreparedStatement select;
         ResultSet resultat;
@@ -171,7 +170,12 @@ public class gererdemande {
         return demandes;
     }
 
-}
+
+    }
+    
+
+   
+
      
      
      
