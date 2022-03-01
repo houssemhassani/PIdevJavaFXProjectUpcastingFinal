@@ -134,8 +134,8 @@ public class gererdemande {
                 demande p = new demande();
                 p.setId_demande(rs.getInt("ID"));
                 p.setNum_demande(rs.getInt("num_demande"));
-                p.setType_demande(rs.getString("type"));
-                p.setDate_demande(rs.getString("date"));
+                p.setType_demande(rs.getString("type_demande"));
+                p.setDate_demande(rs.getString("date_demande"));
                   p.setId_citoyen(rs.getInt("id_citoyen"));
                     p.setId_service(rs.getInt("id_service"));
                 personnes.add(p);

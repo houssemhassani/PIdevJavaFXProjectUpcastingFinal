@@ -44,6 +44,34 @@ public class DBConnexion {
         }
     }
 
+    public static  ObservableList<demande>getDatademande(){
+    
+         Connection conn = DBConnexion.connecterDB();
+        ObservableList<demande> oblist =FXCollections.observableArrayList();
+        try {
+        ResultSet rs =conn.createStatement().executeQuery("select * from demande");
+        
+        while(rs.next()){
+        
+        oblist.add(new demande(rs.getInt("ID"),rs.getInt("num_demande"),rs.getString("type_demande"),
+        rs.getString("date_demande"),
+        rs.getInt("id_citoyen"),
+        rs.getInt("id_service")));        
+        }
+        }catch (SQLException ex){
+        
+    
+        }
+        return oblist ;
+    
+    
+    
+    
+    }
+    
+    
+    
+    
    
 }
     

@@ -40,9 +40,7 @@ public class notification {
         this.email_notification = email_notification;
     }
 
-    public notification() {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
     public int getId_notification() {
         return id_notification;
@@ -76,10 +74,7 @@ public class notification {
         this.email_notification = email_notification;
     }
 
-    @Override
-    public String toString() {
-        return "notification{" + "num_notificatione=" + num_notificatione + ", type_notification=" + type_notification + ", email_notification=" + email_notification + ", demande=" + demande + '}';
-    }
+    
 
     public String getDemande() {
         return demande;
@@ -88,6 +83,12 @@ public class notification {
     public void setDemande(String demande) {
         this.demande = demande;
     }
+
+    @Override
+    public String toString() {
+        return "notification{" + "num_notificatione=" + num_notificatione + ", type_notification=" + type_notification + ", email_notification=" + email_notification + ", id_demande=" + id_demande + ", demande=" + demande + '}';
+    }
+
 
     
 

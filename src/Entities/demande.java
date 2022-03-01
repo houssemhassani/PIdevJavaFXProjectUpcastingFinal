@@ -25,6 +25,10 @@ public class demande  {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public demande(int aInt, String string, String string0, int aInt0, int aInt1) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     public String toString() {
         return "demande{" + "id_demande=" + id_demande + ", num_demande=" + num_demande + ", type_demande=" + type_demande + ", date_demande=" + date_demande + ", id_service=" + id_service + ", id_citoyen=" + id_citoyen + '}';

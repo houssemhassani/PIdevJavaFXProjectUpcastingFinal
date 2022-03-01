@@ -21,15 +21,15 @@
             <TextField fx:id="tfCITOYEN" layoutX="122.0" layoutY="315.0" prefHeight="30.0" prefWidth="140.0" />
             <Label layoutX="32.0" layoutY="390.0" text="id_service" textFill="#0cc21b" />
             <TextField fx:id="tfSERVICE" layoutX="122.0" layoutY="385.0" prefHeight="30.0" prefWidth="140.0" />
-            <Button fx:id="btnajouter" layoutX="30.0" layoutY="462.0" mnemonicParsing="false" onAction="#savedemande" onMouseClicked="#getSelected" text="ajouter" />
-            <Button fx:id="btnmodifier" layoutX="129.0" layoutY="462.0" mnemonicParsing="false" onAction="#Edit" text="modifier" />
+            <Button fx:id="btnajouter" layoutX="30.0" layoutY="462.0" mnemonicParsing="false" onAction="#savedemande" onMouseClicked="#getSelected" style="-fx-background-color: green;" text="ajouter" />
+            <Button fx:id="btnmodifier" layoutX="129.0" layoutY="462.0" mnemonicParsing="false" onAction="#Edit" style="-fx-background-color: orange;" text="modifier" />
             <TextField fx:id="tfID" layoutX="122.0" layoutY="72.0" prefHeight="30.0" prefWidth="140.0" />
             <Label layoutX="40.0" layoutY="77.0" text="id" textFill="#0cc21b" />
-            <Button fx:id="btnsupprimer" layoutX="233.0" layoutY="462.0" mnemonicParsing="false" onAction="#Delete" text="supprimer" />
+            <Button fx:id="btnsupprimer" layoutX="233.0" layoutY="462.0" mnemonicParsing="false" onAction="#Delete" style="-fx-background-color: red;" text="supprimer" />
            
          </children>
       </AnchorPane>
-      <TableView fx:id="table_demande" layoutX="463.0" layoutY="128.0" onMouseClicked="#getSelected" prefHeight="200.0" prefWidth="550.0">
+      <TableView fx:id="table_demande" layoutX="463.0" layoutY="217.0" onMouseClicked="#getSelected" prefHeight="285.0" prefWidth="550.0">
         <columns>
           <TableColumn fx:id="col_ID" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="col_numero" prefWidth="75.0" text="numero" />

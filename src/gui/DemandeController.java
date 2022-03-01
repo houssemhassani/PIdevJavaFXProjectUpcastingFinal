@@ -34,10 +34,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import services.gererdemande;
 import Entities.demande;
+import Utils.JavaMailUtil;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javax.swing.JOptionPane;
 /**
  * FXML Controller class
@@ -70,6 +73,9 @@ public class DemandeController implements Initializable {
     private Button btnrefresh;
     @FXML
     private TextField tfID;
+      @FXML
+    private TextField filterFiled;
+
     
     @FXML
     private TableView<demande> table_demande;
@@ -97,20 +103,41 @@ public class DemandeController implements Initializable {
      * Initializes the controller class.
      */
    
-    ObservableList<demande> oblist =FXCollections.observableArrayList();
+    ObservableList<demande> oblist;
+     ObservableList<demande> data;
     int index =-1;
     Connection conn =null;
     PreparedStatement pst =null;
     
+    public void UpdateTable(){
     
+       col_ID.setCellValueFactory(new PropertyValueFactory<demande,Integer>("id_demande"));  
+       col_numero.setCellValueFactory(new PropertyValueFactory<demande,Integer>("num_demande"));
+       col_type.setCellValueFactory(new PropertyValueFactory<demande,String>("type_demande"));
+       col_date.setCellValueFactory(new PropertyValueFactory<demande,String>("date_demande"));
+       col_citoyen.setCellValueFactory(new PropertyValueFactory<demande,Integer>("id_citoyen"));
+       col_service.setCellValueFactory(new PropertyValueFactory<demande,Integer>("id_service"));
+        oblist=DBConnexion.getDatademande();
+        table_demande.setItems(oblist);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }
     @Override
     
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        
+      
+      UpdateTable(); 
        
-        UpdateTable();
+      
       
     }
     
@@ -124,9 +151,10 @@ public class DemandeController implements Initializable {
         try {
             
             pst =conn.prepareStatement(sql);
-           int num_demande = Integer.parseInt(tfNUM.getText());  
+            int num_demande = Integer.parseInt(tfNUM.getText());  
+           
             String type_demande =tfTYPE.getText();
-    String date_demande =tfDATE.getText();
+            String date_demande =tfDATE.getText();
     
      int id_citoyen = Integer.parseInt(tfCITOYEN.getText());
      int id_service = Integer.parseInt(tfSERVICE.getText());
@@ -140,14 +168,13 @@ public class DemandeController implements Initializable {
      
      pst.execute();
      JOptionPane.showMessageDialog(null, "demande ajoutée");
-      UpdateTable();
+        UpdateTable(); 
             
         } catch (Exception e) {
         JOptionPane.showMessageDialog(null, e);        
         }
-    
-    
-    
+       
+   
     
     }
     
@@ -161,6 +188,7 @@ public class DemandeController implements Initializable {
         try {
          
           Connection conn =DBConnexion.connecterDB();
+         
             String value1 =tfID.getText();
             String value2 =tfNUM.getText();
             String value3 =tfTYPE.getText();
@@ -168,24 +196,21 @@ public class DemandeController implements Initializable {
             String value5 =tfCITOYEN.getText();
             String value6 =tfSERVICE.getText();
             
-   String sql="update demande set "
-           + "ID='"+value1+"',"
-            + "num_demande='"+value2+"',"
-           + "type_demande='"+value3+"',"
-           + "date_demande='"+value4+"',"
-           + "id_citoyen='"+value5+"',"         
-           + "id_service='"+value6+"',"; 
+   String sql="update demande set ID='"+value1+"',num_demande='"+value2+"',type_demande='"+value3+"',date_demande='"+value4+"',id_citoyen='"+value5+"',id_service='"+value6+"' where ID='"+value1+"'"        
+           ; 
             pst=conn.prepareStatement(sql);
             pst.execute();
-            JOptionPane.showMessageDialog(null, "modifier");
-             UpdateTable();
+            JOptionPane.showMessageDialog(null, "Update");
+             UpdateTable(); 
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        }
+        
+    }
     
    
     
+        
     }
     
     @FXML
@@ -198,7 +223,7 @@ public class DemandeController implements Initializable {
            pst.setString(1, tfID.getText());
            pst.execute();
            JOptionPane.showMessageDialog(null, "Delete");
-            
+            UpdateTable();
        } catch (Exception e) {
            JOptionPane.showMessageDialog(null, e);
        }
@@ -222,39 +247,12 @@ public class DemandeController implements Initializable {
     
     }
     
-    public void UpdateTable(){
-    try {Connection conn = DBConnexion.connecterDB();
-        ResultSet rs =conn.createStatement().executeQuery("select * from demande");
-        
-        while(rs.next()){
-        
-        oblist.add(new demande(rs.getInt("ID"),rs.getInt("num_demande"),rs.getString("type_demande"),
-        rs.getString("date_demande"),
-        rs.getInt("id_citoyen"),
-        rs.getInt("id_service")));        
-        }
-        }catch (SQLException ex){
-        
-        Logger.getLogger(demande.class.getName()).log(Level.SEVERE,null,ex);
-        }
-       col_ID.setCellValueFactory(new PropertyValueFactory<demande,Integer>("id_demande"));  
-       col_numero.setCellValueFactory(new PropertyValueFactory<demande,Integer>("num_demande"));
-       col_type.setCellValueFactory(new PropertyValueFactory<demande,String>("type_demande"));
-       col_date.setCellValueFactory(new PropertyValueFactory<demande,String>("date_demande"));
-       col_citoyen.setCellValueFactory(new PropertyValueFactory<demande,Integer>("id_citoyen"));
-       col_service.setCellValueFactory(new PropertyValueFactory<demande,Integer>("id_service"));
-        
-        table_demande.setItems(oblist);
-    
-    
-    
     
     }
-    
-    
+  
     
    
-}
+
    
     
     

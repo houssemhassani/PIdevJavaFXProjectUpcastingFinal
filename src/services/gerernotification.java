@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,6 +34,7 @@ public class gerernotification {
          ResultSet resultat;
          PreparedStatement insert;
          try {
+            
             select= cnx.prepareStatement("Select * from notification where num_notification="+num_notification+"");
             resultat=select.executeQuery();
             if(!resultat.isBeforeFirst())
@@ -121,14 +123,12 @@ public class gerernotification {
             ResultSet rs = ste.executeQuery(req);
             
             while(rs.next()){
-                notification n = new notification();
-                n.setId_notification(rs.getInt("id"));
-                n.setNum_notificatione(rs.getInt("num_notification"));
-                n.setType_notification(rs.getString("type"));
-                n.setEmail_notification(rs.getString("email"));
-                n.setDemande(rs.getString("type"));
-                    
-                notifications.add(n);
+               notification n = new notification(
+                       rs.getInt("id_notification"), 
+                       rs.getInt("num_notificatione"), 
+                       rs.getString("type_notification"), 
+                       rs.getString("email_notification"), 
+                       rs.getInt("id_demande"));
             }
             
         } catch (SQLException ex) {
@@ -137,7 +137,40 @@ public class gerernotification {
         
         return notifications;
     }
-     
+    public static List<notification> Recherchenotification(int num_notification) throws SQLException {
+      List<notification> notifications = new ArrayList<>();
+        String req = "select * from notification WHERE num_notification=" + num_notification;
+         Statement 
+            ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery(req);
+
+        while (rs.next()) {
+            notification n = new notification(
+                    rs.getInt("id_notification"),
+                    rs.getInt("num_notification"),
+                    rs.getString("type_notification"),
+                    rs.getString("email_demande"),
+                    rs.getInt("id_demande"));
+                    
+                    
+
+            
+            notifications.add(n);
+        }
+        return notifications;
+    }
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
     }
    
      

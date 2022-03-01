@@ -45,22 +45,23 @@ Date now = new Date();
       //gerernotification.modifiernotification(15, "paiment");
      // gerernotification.supprimerdemande(15);
 
-        /*  ArrayList<demande> e=gererdemande.afficher();
+         /* ArrayList<demande> e=gererdemande.afficher();
        for (demande object : e) {
             System.out.println(object.toString());
             
       }*/
     
-       /* ArrayList<notification> n=gerernotification.afficher();
-       for (notification object : n) {
+       ArrayList<notification> d=gerernotification.afficher();
+       for (notification object : d) {
             System.out.println(object.toString());
             
-      }*/
-      
+      }
+       //System.out.println(gererdemande.afficher());
+        
         // System.out.println(gererdemande.Recherchedemande(8));
      
-         // gerercitoyen.inscrire("hamza", "abda","hamzaabda09@gmail.com", "11401757", 26862373, "bizerte", vDateYMD, vDateYMD);
-       
+//     gerernotification.ajouternotification(15, "facture", "hamzaabda08@gmail.com",15);
+        //System.out.println(gerernotification.afficher());
     }
     
 }    
