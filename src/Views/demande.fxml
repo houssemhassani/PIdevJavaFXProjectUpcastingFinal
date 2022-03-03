@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="1106.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DemandeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="1292.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DemandeController">
    <children>
-      <AnchorPane prefHeight="509.0" prefWidth="449.0" style="-fx-background-color: #03224C;">
+      <AnchorPane prefHeight="557.0" prefWidth="449.0" style="-fx-background-color: #03224C;">
          <children>
             <Label layoutX="14.0" layoutY="135.0" text="num_demande" textFill="#0cc21b" />
             <TextField fx:id="tfNUM" layoutX="122.0" layoutY="130.0" prefHeight="30.0" prefWidth="140.0" />
@@ -17,19 +19,18 @@
             <TextField fx:id="tfTYPE" layoutX="122.0" layoutY="190.0" prefHeight="30.0" prefWidth="140.0" />
             <Label layoutX="14.0" layoutY="260.0" text="date_demande" textFill="#0cc21b" />
             <TextField fx:id="tfDATE" layoutX="122.0" layoutY="255.0" prefHeight="30.0" prefWidth="140.0" />
-            <Label layoutX="30.0" layoutY="320.0" text="id_citoyen" textFill="#0cc21b" />
-            <TextField fx:id="tfCITOYEN" layoutX="122.0" layoutY="315.0" prefHeight="30.0" prefWidth="140.0" />
-            <Label layoutX="32.0" layoutY="390.0" text="id_service" textFill="#0cc21b" />
-            <TextField fx:id="tfSERVICE" layoutX="122.0" layoutY="385.0" prefHeight="30.0" prefWidth="140.0" />
+            <Label layoutX="14.0" layoutY="341.0" text="Nom service" textFill="#0cc21b" />
             <Button fx:id="btnajouter" layoutX="30.0" layoutY="462.0" mnemonicParsing="false" onAction="#savedemande" onMouseClicked="#getSelected" style="-fx-background-color: green;" text="ajouter" />
             <Button fx:id="btnmodifier" layoutX="129.0" layoutY="462.0" mnemonicParsing="false" onAction="#Edit" style="-fx-background-color: orange;" text="modifier" />
             <TextField fx:id="tfID" layoutX="122.0" layoutY="72.0" prefHeight="30.0" prefWidth="140.0" />
             <Label layoutX="40.0" layoutY="77.0" text="id" textFill="#0cc21b" />
             <Button fx:id="btnsupprimer" layoutX="233.0" layoutY="462.0" mnemonicParsing="false" onAction="#Delete" style="-fx-background-color: red;" text="supprimer" />
+            <ComboBox fx:id="tfSERVICE" layoutX="117.0" layoutY="336.0" prefWidth="150.0" />
+            <Label fx:id="idcitoyen" layoutX="175.0" layoutY="28.0" text="1" visible="false" />
            
          </children>
       </AnchorPane>
-      <TableView fx:id="table_demande" layoutX="463.0" layoutY="217.0" onMouseClicked="#getSelected" prefHeight="285.0" prefWidth="550.0">
+      <TableView fx:id="table_demande" layoutX="583.0" layoutY="189.0" onMouseClicked="#getSelected" prefHeight="285.0" prefWidth="550.0">
         <columns>
           <TableColumn fx:id="col_ID" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="col_numero" prefWidth="75.0" text="numero" />
@@ -39,6 +40,18 @@
             <TableColumn fx:id="col_service" prefWidth="85.0" text="service" />
         </columns>
       </TableView>
-      
+      <TextField fx:id="filterFiled" layoutX="742.0" layoutY="126.0" promptText="SEARCH" />
+      <AnchorPane layoutX="449.0" layoutY="519.0" prefHeight="38.0" prefWidth="842.0" style="-fx-background-color: #03224C;">
+         <children>
+            <Button fx:id="gererreclamation" layoutX="623.0" layoutY="7.0" mnemonicParsing="false" onAction="#gererreclamation" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #03224C;" text="Gérer Réclamation" textFill="WHITE" />
+            <Button fx:id="gererprofil" layoutX="344.0" layoutY="7.0" mnemonicParsing="false" onAction="#gererprofil" prefHeight="31.0" prefWidth="140.0" style="-fx-background-color: #03224C;" text="Gérer Profil" textFill="#f2f2f2" />
+            <Button fx:id="gererpublication" layoutX="63.0" layoutY="6.0" mnemonicParsing="false" onAction="#gererpublication" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #03224C;" text="Gérer publication" textFill="#f2f2f2" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="710.0" layoutY="35.0" text="Gestion des demandes" textFill="#03224c">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

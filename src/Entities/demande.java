@@ -17,9 +17,26 @@ public class demande  {
     int num_demande;
     String type_demande;
     String  date_demande;
-   
+   String nom_service;
     int id_service;
     int id_citoyen;  
+    String etat;
+
+    public String getNom_service() {
+        return nom_service;
+    }
+
+    public void setNom_service(String nom_service) {
+        this.nom_service = nom_service;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
 
     public demande() {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

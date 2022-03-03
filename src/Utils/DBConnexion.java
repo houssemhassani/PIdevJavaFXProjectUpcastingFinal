@@ -52,11 +52,12 @@ public class DBConnexion {
         ResultSet rs =conn.createStatement().executeQuery("select * from demande");
         
         while(rs.next()){
-        
-        oblist.add(new demande(rs.getInt("ID"),rs.getInt("num_demande"),rs.getString("type_demande"),
+        demande d=new demande(rs.getInt("ID"),rs.getInt("num_demande"),rs.getString("type_demande"),
         rs.getString("date_demande"),
         rs.getInt("id_citoyen"),
-        rs.getInt("id_service")));        
+        rs.getInt("id_service"));
+        d.setEtat(rs.getString("etat"));
+        oblist.add(d);        
         }
         }catch (SQLException ex){
         

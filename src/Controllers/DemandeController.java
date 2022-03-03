@@ -1,9 +1,11 @@
+package Controllers;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+
 
 import Entities.demande;
 import Utils.DBConnexion;
@@ -34,13 +36,19 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import services.gererdemande;
 import Entities.demande;
-import Utils.JavaMailUtil;
+import Utils.api;
+
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
 /**
  * FXML Controller class
@@ -58,19 +66,16 @@ public class DemandeController implements Initializable {
     @FXML
     private TextField tfDATE;
 
-    @FXML
     private TextField tfCITOYEN;
 
     @FXML
-    private TextField tfSERVICE;
+    private ComboBox<String> tfSERVICE;
 
     @FXML
     private Button btnajouter;
 
    @FXML
     private Button btnmodifier;
-     @FXML
-    private Button btnrefresh;
     @FXML
     private TextField tfID;
       @FXML
@@ -108,6 +113,19 @@ public class DemandeController implements Initializable {
     int index =-1;
     Connection conn =null;
     PreparedStatement pst =null;
+    @FXML
+    private Button btnsupprimer;
+    @FXML
+    private Button gererpublication;
+    @FXML
+    private Label idcitoyen;
+    @FXML
+    private Button gererreclamation;
+    @FXML
+    private Button gererprofil;
+
+   
+
     
     public void UpdateTable(){
     
@@ -129,15 +147,77 @@ public class DemandeController implements Initializable {
     
     
     }
+    void search_demande(){
+    col_ID.setCellValueFactory(new PropertyValueFactory<demande,Integer>("id_demande"));  
+       col_numero.setCellValueFactory(new PropertyValueFactory<demande,Integer>("num_demande"));
+       col_type.setCellValueFactory(new PropertyValueFactory<demande,String>("type_demande"));
+       col_date.setCellValueFactory(new PropertyValueFactory<demande,String>("date_demande"));
+       col_citoyen.setCellValueFactory(new PropertyValueFactory<demande,Integer>("id_citoyen"));
+       col_service.setCellValueFactory(new PropertyValueFactory<demande,Integer>("id_service"));
+    
+    
+       data=DBConnexion.getDatademande();
+       table_demande.setItems(data);
+       
+       FilteredList<demande> filteredData = new FilteredList<>(data,b -> true);
+       filterFiled.textProperty().addListener((ObservableList,oldValue,newValue)->{
+           
+       filteredData.setPredicate(demande->{
+       if (newValue == null || newValue.isEmpty()){
+       return true;
+       }
+       String lowerCaseFilter = newValue.toLowerCase();
+       if(demande.getType_demande().indexOf(lowerCaseFilter)!=-1){
+      return true ; // Filter matches password  
+      }
+           return false;
+      
+       
+       }) ;        
+           
+       });
+       
+    SortedList<demande>sortedData = new SortedList<>(filteredData);
+    sortedData.comparatorProperty().bind(table_demande.comparatorProperty());
+    table_demande.setItems(sortedData);
+       
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+    
+    
+    
+    
     @Override
     
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-      
+        Connection conn =DBConnexion.connecterDB();
+        ResultSet resultat;
+        String sql="select * from service";
+        ArrayList<String> services=new ArrayList<>();
+        try {
+            pst=conn.prepareStatement(sql);
+            resultat=pst.executeQuery();
+            while(resultat.next())
+            {
+                services.add(resultat.getString("nomService"));
+            }
+            
+        } catch (Exception e) {
+        }
+        this.tfSERVICE.getItems().addAll(services);
+      tfID.setEditable(false);
       UpdateTable(); 
-       
+      search_demande();
       
+    
       
     }
     
@@ -145,27 +225,33 @@ public class DemandeController implements Initializable {
     
     @FXML    
     void savedemande(ActionEvent event) {
-    
+    PreparedStatement p2;
+    ResultSet resultat;
       Connection conn =DBConnexion.connecterDB();
       String sql="insert into demande(num_demande,type_demande,date_demande,id_citoyen,id_service)values(?,?,?,?,?)";
         try {
             
             pst =conn.prepareStatement(sql);
             int num_demande = Integer.parseInt(tfNUM.getText());  
-           
             String type_demande =tfTYPE.getText();
             String date_demande =tfDATE.getText();
-    
-     int id_citoyen = Integer.parseInt(tfCITOYEN.getText());
-     int id_service = Integer.parseInt(tfSERVICE.getText());
-     
+     int id_citoyen = Integer.parseInt(this.idcitoyen.getText());
+    String sql2="select * from service where nomService='"+this.tfSERVICE.getValue().toString()+"'";
+    p2=conn.prepareStatement(sql2);
+    resultat=p2.executeQuery();
+    int id = 0;
+    while(resultat.next())
+    {
+        id=resultat.getInt("id");
+    }
+    // int id_service = Integer.parseInt(tfSERVICE.getText());
      pst.setString(1, tfNUM.getText());
      pst.setString(2, tfTYPE.getText());
      pst.setString(3, tfDATE.getText());
-     pst.setString(4, tfCITOYEN.getText());
-     pst.setString(5, tfSERVICE.getText());
-     
-     
+     pst.setInt(4, id_citoyen);
+     pst.setInt(5, id);
+     api ap= new api();
+     ap.sms("netbeanssms2022", "Hamza1234",this.col_numero.getText(),this.tfDATE.getText());
      pst.execute();
      JOptionPane.showMessageDialog(null, "demande ajoutée");
         UpdateTable(); 
@@ -178,8 +264,7 @@ public class DemandeController implements Initializable {
     
     }
     
-    
-   
+           
     
     
    @FXML
@@ -189,17 +274,18 @@ public class DemandeController implements Initializable {
          
           Connection conn =DBConnexion.connecterDB();
          
-            String value1 =tfID.getText();
-            String value2 =tfNUM.getText();
+            int value1 =Integer.parseInt(tfID.getText());
+            
+            
             String value3 =tfTYPE.getText();
             String value4 =tfDATE.getText();
-            String value5 =tfCITOYEN.getText();
-            String value6 =tfSERVICE.getText();
+            //String value5 =tfCITOYEN.getText();
+           // String value6 =tfSERVICE.getValue().toString();
             
-   String sql="update demande set ID='"+value1+"',num_demande='"+value2+"',type_demande='"+value3+"',date_demande='"+value4+"',id_citoyen='"+value5+"',id_service='"+value6+"' where ID='"+value1+"'"        
-           ; 
+   String sql="update demande set type_demande='"+value3+"',date_demande='"+value4+"' where ID="+value1;        
+           
             pst=conn.prepareStatement(sql);
-            pst.execute();
+            pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Update");
              UpdateTable(); 
             
@@ -221,7 +307,7 @@ public class DemandeController implements Initializable {
        try {
            pst = conn.prepareStatement(sql);
            pst.setString(1, tfID.getText());
-           pst.execute();
+           pst.executeUpdate();
            JOptionPane.showMessageDialog(null, "Delete");
             UpdateTable();
        } catch (Exception e) {
@@ -239,13 +325,64 @@ public class DemandeController implements Initializable {
     return;
     }
     tfID.setText(col_ID.getCellData(index).toString());
+    tfNUM.setDisable(true);
+    
+    tfSERVICE.setDisable(true);
     tfNUM.setText(col_numero.getCellData(index).toString());
     tfTYPE.setText(col_type.getCellData(index).toString());
     tfDATE.setText(col_date.getCellData(index).toString());
-    tfCITOYEN.setText(col_citoyen.getCellData(index).toString());
-    tfSERVICE.setText(col_service.getCellData(index).toString());
+   // tfCITOYEN.setText(col_citoyen.getCellData(index).toString());
+   // tfSERVICE.setText(col_service.getCellData(index).toString());
     
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    private void gerernotification(ActionEvent event) {
+        try {
+            
+            Parent parent = FXMLLoader.load(getClass().getResource("/gui/sms.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    
+    }
+    
+    
+
+    @FXML
+    private void gererpublication(ActionEvent event) {
+    }
+
+    @FXML
+    private void gererreclamation(ActionEvent event) {
+    }
+
+    @FXML
+    private void gererprofil(ActionEvent event) {
+    }
+
+    
     
     
     }
