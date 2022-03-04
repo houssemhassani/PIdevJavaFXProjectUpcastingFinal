@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="1292.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DemandeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#nonselected" prefHeight="557.0" prefWidth="1292.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DemandeController">
    <children>
-      <AnchorPane prefHeight="557.0" prefWidth="449.0" style="-fx-background-color: #03224C;">
+      <AnchorPane fx:id="pane" prefHeight="557.0" prefWidth="449.0" style="-fx-background-color: #03224C;">
          <children>
             <Label layoutX="14.0" layoutY="135.0" text="num_demande" textFill="#0cc21b" />
             <TextField fx:id="tfNUM" layoutX="122.0" layoutY="130.0" prefHeight="30.0" prefWidth="140.0" />

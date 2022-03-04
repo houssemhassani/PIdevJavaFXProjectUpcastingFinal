@@ -123,6 +123,8 @@ public class DemandeController implements Initializable {
     private Button gererreclamation;
     @FXML
     private Button gererprofil;
+    @FXML
+    private AnchorPane pane;
 
    
 
@@ -380,6 +382,20 @@ public class DemandeController implements Initializable {
 
     @FXML
     private void gererprofil(ActionEvent event) {
+    }
+
+    @FXML
+    private void nonselected(javafx.scene.input.MouseEvent event) {
+        
+        tfID.setText("");
+    tfNUM.setDisable(false);
+    
+    tfSERVICE.setDisable(false);
+    tfNUM.setText("");
+    tfTYPE.setText("");
+    tfDATE.setText("");
+        
+        
     }
 
     
