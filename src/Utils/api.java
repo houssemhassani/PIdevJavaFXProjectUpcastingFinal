@@ -28,6 +28,8 @@ import okio.Okio;
 public class api {
     
     public void sms (String to, String message){
+        try
+        {
        ApiClient defaultClient = new ApiClient();
         defaultClient.setUsername("hamzaabda09@gmail.com");
         defaultClient.setPassword("57CC6BBB-B638-4712-B95A-1B11B1C09B17");
@@ -35,9 +37,9 @@ public class api {
 
         SmsMessage smsMessage = new SmsMessage();
    
-        smsMessage.body("nik omek" );
+        smsMessage.body(message );
       
-        smsMessage.to("+216"+26862373);
+        smsMessage.to("+216"+to);
         smsMessage.source("sign up");
         
 
@@ -45,11 +47,11 @@ public class api {
         // SmsMessageCollection | SmsMessageCollection model
         SmsMessageCollection smsMessages = new SmsMessageCollection();
         smsMessages.messages(smsMessageList);
-        try {
+      
             String result = apiInstance.smsSendPost(smsMessages);
             System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling SmsApi#smsSendPost");
+        } catch (Exception e) {
+            System.err.println("Exception when calling SmsApi#smsSendPost \n"+e.getMessage());
             e.printStackTrace();
         }
     

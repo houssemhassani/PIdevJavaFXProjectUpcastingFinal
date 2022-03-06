@@ -38,7 +38,7 @@ public class Fxmain extends Application {
        
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("demanderesponsable.fxml"));
+            root = FXMLLoader.load(getClass().getResource("sms.fxml"));
             Scene scene = new Scene(root);
         
             primaryStage.setTitle("hello");
