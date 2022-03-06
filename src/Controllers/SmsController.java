@@ -52,7 +52,7 @@ public class SmsController implements Initializable {
     private void envoyer(ActionEvent event) {
 
      api ap= new api();
-     ap.sms("netbeanssms2022", "Hamza1234",this.tfnum.getText(),this.tftext.getText());
+     ap.sms(this.tfnum.getText(),this.tftext.getText());
 
 
     }

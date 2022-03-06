@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -37,6 +38,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.text.Document;
+import services.gererdemande;
 
 /**
  * FXML Controller class
@@ -94,6 +99,8 @@ public class DemanderesponsableController implements Initializable {
     private Button gererprofil;
     @FXML
     private Button gerernotification;
+    @FXML
+    private Button btncalculer;
 
     /**
      * Initializes the controller class.
@@ -317,6 +324,24 @@ public class DemanderesponsableController implements Initializable {
             System.out.println(ex.getMessage());
         }   
     }
+
+    @FXML
+    private void resultat(ActionEvent event) {
+        
+        int a,z,e;
+        gererdemande gd = new gererdemande();
+        
+        a=gd.countDemEncours();
+        z=gd.countDemTr();
+        e=gd.countDemNtr();
+        
+        JOptionPane.showMessageDialog(null, "demande traitée : "+z + "\n"+"demande non traitée : "+e+"\n"+"demande en cours : "+a);
+        
+        
+        
+    }
+
+   
 
     
 }

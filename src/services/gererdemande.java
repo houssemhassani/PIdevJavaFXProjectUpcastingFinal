@@ -169,7 +169,65 @@ public class gererdemande {
         }
         return demandes;
     }
-
+        public int countDemEncours()
+            {
+                int i =0; 
+                try {
+                    
+                PreparedStatement pst;
+                String etat="en cours";
+                String sql="select * from demande where etat='"+etat+"'";
+                pst=cnx.prepareStatement(sql);
+                ResultSet rs = pst.executeQuery(sql);
+                
+                    while (rs.next()){
+                        i+=1;   
+                    }
+                } catch(SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }  
+                return i;
+            }
+        
+        public int countDemTr()
+            {
+                int i =0; 
+                try {
+                    
+                PreparedStatement pst;
+                String etat="traitée";
+                String sql="select * from demande where etat='"+etat+"'";
+                pst=cnx.prepareStatement(sql);
+                ResultSet rs = pst.executeQuery(sql);
+                
+                    while (rs.next()){
+                        i+=1;   
+                    }
+                } catch(SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }  
+                return i;
+            }
+        
+        public int countDemNtr()
+            {
+                int i =0; 
+                try {
+                    
+                PreparedStatement pst;
+                String etat="non traitée";
+                String sql="select * from demande where etat='"+etat+"'";
+                pst=cnx.prepareStatement(sql);
+                ResultSet rs = pst.executeQuery(sql);
+                
+                    while (rs.next()){
+                        i+=1;   
+                    }
+                } catch(SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }  
+                return i;
+            }
 
     }
     

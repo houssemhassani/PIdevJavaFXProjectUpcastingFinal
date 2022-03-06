@@ -48,6 +48,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
 /**
@@ -116,15 +117,27 @@ public class DemandeController implements Initializable {
     @FXML
     private Button btnsupprimer;
     @FXML
-    private Button gererpublication;
-    @FXML
     private Label idcitoyen;
     @FXML
-    private Button gererreclamation;
-    @FXML
-    private Button gererprofil;
-    @FXML
     private AnchorPane pane;
+    @FXML
+    private ImageView Exit;
+    @FXML
+    private Button gestiondemande;
+    @FXML
+    private Label Menu;
+    @FXML
+    private Label MenuBack;
+    @FXML
+    private ImageView MenuClose;
+    @FXML
+    private AnchorPane slider;
+    @FXML
+    private Button btnprofil;
+    @FXML
+    private Button btnreclamation;
+    @FXML
+    private Button btnpublication;
 
    
 
@@ -253,7 +266,7 @@ public class DemandeController implements Initializable {
      pst.setInt(4, id_citoyen);
      pst.setInt(5, id);
      api ap= new api();
-     ap.sms("netbeanssms2022", "Hamza1234",this.col_numero.getText(),this.tfDATE.getText());
+     ap.sms(this.col_numero.getText(),this.tfDATE.getText());
      pst.execute();
      JOptionPane.showMessageDialog(null, "demande ajoutée");
         UpdateTable(); 
@@ -372,17 +385,6 @@ public class DemandeController implements Initializable {
     
     
 
-    @FXML
-    private void gererpublication(ActionEvent event) {
-    }
-
-    @FXML
-    private void gererreclamation(ActionEvent event) {
-    }
-
-    @FXML
-    private void gererprofil(ActionEvent event) {
-    }
 
     @FXML
     private void nonselected(javafx.scene.input.MouseEvent event) {
@@ -394,6 +396,45 @@ public class DemandeController implements Initializable {
     tfNUM.setText("");
     tfTYPE.setText("");
     tfDATE.setText("");
+        
+        
+    }
+
+    @FXML
+    private void Gererdemande(ActionEvent event) {
+    
+     try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/demande.fxml"));
+            Parent root = loader.load();
+            DemandeController controller =  loader.getController();
+            this.gestiondemande.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    
+    }
+
+    @FXML
+    private void gererprofil(ActionEvent event) {
+    
+    
+    
+    
+    }
+
+    @FXML
+    private void btnreclamation(ActionEvent event) {
+        
+        
+    }
+
+    @FXML
+    private void gererpublication(ActionEvent event) {
+        
+        
+        
+        
         
         
     }
