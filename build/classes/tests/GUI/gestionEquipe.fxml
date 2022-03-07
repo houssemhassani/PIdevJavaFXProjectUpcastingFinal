@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="AnchorPane" prefHeight="863.0" prefWidth="1432.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tests.GUI.GestionEquipeController">
+   <children>
+      <TextField fx:id="Num_Equipe" layoutX="140.0" layoutY="392.0" />
+      <TextField fx:id="Service_Equipe" layoutX="140.0" layoutY="426.0" />
+      <Label layoutX="21.0" layoutY="397.0" text="Numero Equipe" />
+      <Label layoutX="21.0" layoutY="431.0" text="Service Equipe" />
+      <TableView fx:id="Table_Equipe" layoutX="24.0" layoutY="69.0" onMouseClicked="#select_equipe" prefHeight="309.0" prefWidth="512.0">
+        <columns>
+          <TableColumn fx:id="ID_EQUIPE" prefWidth="98.99996948242188" text="ID_EQUIPE" />
+          <TableColumn fx:id="NUM_EQUIPE" prefWidth="114.0" text="NUM_EQUIPE" />
+            <TableColumn fx:id="SERVICE_EQUIPE" prefWidth="143.0" text="SERVICE_EQUIPE" />
+            <TableColumn fx:id="NBRE_EMP" minWidth="0.0" prefWidth="148.0" text="NBRE_EMPLOYEE" />
+        </columns>
+      </TableView>
+      <Button fx:id="EXIT_Button" layoutX="1101.0" layoutY="823.0" mnemonicParsing="false" onAction="#EXIT" text="Exit" />
+      <Button layoutX="350.0" layoutY="392.0" mnemonicParsing="false" onAction="#ajouterEquipe" prefHeight="32.0" prefWidth="115.0" text="Ajouter" />
+      <Button layoutX="350.0" layoutY="427.0" mnemonicParsing="false" onAction="#EDIT_EQUIPE" prefHeight="32.0" prefWidth="115.0" text="Modifier" />
+      <Button layoutX="350.0" layoutY="462.0" mnemonicParsing="false" onAction="#DELETE_EQUIPE" prefHeight="32.0" prefWidth="115.0" text="Suprimer" />
+      <ImageView fitHeight="143.0" fitWidth="187.0" layoutX="1145.0" layoutY="701.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Desktop/loGo.PNG" />
+         </image>
+      </ImageView>
+      <TableView fx:id="TABLE_EMP" layoutX="563.0" layoutY="69.0" prefHeight="586.0" prefWidth="861.0">
+        <columns>
+          <TableColumn fx:id="ID_EMP" prefWidth="25.0" text="ID" />
+            <TableColumn fx:id="CIN_EMP" prefWidth="74.0" text="CIN" />
+          <TableColumn fx:id="NOM_EMP" text="Nom" />
+            <TableColumn fx:id="PRENOM_EMP" prefWidth="98.0" text="Prenom" />
+            <TableColumn fx:id="EMAIL_EMP" prefWidth="70.0" text="Email" />
+            <TableColumn fx:id="EQUIPE_ID_EMP" prefWidth="119.0" text="Equipe_ID" />
+            <TableColumn fx:id="NUM_EQUIPE_EMP" prefWidth="111.0" text="Num_Equipe" />
+            <TableColumn fx:id="SERVICE_EMP" prefWidth="71.0" text="Service" />
+            <TableColumn fx:id="TACHE_ID" prefWidth="71.0" text="TACHE" />
+            <TableColumn fx:id="RATING_EMP" prefWidth="71.0" text="RATING" />
+        </columns>
+      </TableView>
+      <Label layoutX="563.0" layoutY="24.0" prefHeight="31.0" prefWidth="173.0" text="Liste des Employées" />
+      <Label layoutX="25.0" layoutY="24.0" prefHeight="31.0" prefWidth="173.0" text="Liste des Equipes" />
+      <Button layoutX="563.0" layoutY="702.0" mnemonicParsing="false" onAction="#RATE_EMP" text="évaluer empolyé" />
+      <Button layoutX="788.0" layoutY="705.0" mnemonicParsing="false" onAction="#SET_EMP_TEAM_ID" text="Ajouter Employer a l'equipe" />
+      <Button layoutX="718.0" layoutY="24.0" mnemonicParsing="false" onAction="#GET_ALL_EMP_VIEW" text="get all employees" />
+      <Button fx:id="button_recherche_par_id" layoutX="910.0" layoutY="24.0" mnemonicParsing="false" onAction="#RECHERCHE_EMP_ID_EQUIPE" text="recherche par team id" />
+      <TextField fx:id="recherche_id_textfield" layoutX="1089.0" layoutY="24.0" />
+      <Label layoutX="73.0" layoutY="781.0" text="selected team/ employee statstic" />
+      <Button fx:id="clear_button" layoutX="1279.0" layoutY="24.0" mnemonicParsing="false" onAction="#CLEAR_TABLE_EMP" text="clear" />
+      <TextField fx:id="ID_EQUIPE_A_AJOUTER" editable="false" layoutX="854.0" layoutY="666.0" prefHeight="31.0" prefWidth="137.0" />
+      <Label layoutX="787.0" layoutY="670.0" text="Id Equipe" />
+      <Button layoutX="1161.0" layoutY="662.0" mnemonicParsing="false" onAction="#gestion_de_tache_button" text="Gestion des taches" />
+      <BarChart fx:id="char_bar" layoutX="34.0" layoutY="504.0" prefHeight="287.0" prefWidth="447.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Rating fx:id="rating_star" layoutX="562.0" layoutY="666.0" />
+      <Button layoutX="350.0" layoutY="776.0" mnemonicParsing="false" onAction="#get_stat_equipe" prefHeight="31.0" prefWidth="115.0" text="Stat Equipe" />
+      <Button layoutX="350.0" layoutY="808.0" mnemonicParsing="false" onAction="#get_stat_emp" text="Stat Employee" />
+   </children>
+</AnchorPane>
