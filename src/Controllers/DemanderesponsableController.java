@@ -35,7 +35,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.swing.JFileChooser;
@@ -90,17 +92,17 @@ public class DemanderesponsableController implements Initializable {
     @FXML
     private TableColumn<demande, String> etat;
     @FXML
-    private Button gererreclamation;
-    @FXML
-    private Button gerertache;
-    @FXML
-    private Button gererequipe;
-    @FXML
-    private Button gererprofil;
-    @FXML
-    private Button gerernotification;
-    @FXML
     private Button btncalculer;
+    @FXML
+    private Label Menu;
+    @FXML
+    private Label MenuBack;
+    @FXML
+    private ImageView MenuClose;
+    @FXML
+    private ImageView Exit;
+    @FXML
+    private AnchorPane slider;
 
     /**
      * Initializes the controller class.
@@ -227,7 +229,6 @@ public class DemanderesponsableController implements Initializable {
     private void getSelected(MouseEvent event) {
     }
 
-    @FXML
     private void demandetraitee(ActionEvent event) {
         ObservableList<demande>r,f;
         f=this.table_demande.getItems();
@@ -293,23 +294,7 @@ public class DemanderesponsableController implements Initializable {
         UpdateTable();
     }
 
-    @FXML
-    private void gererreclamation(ActionEvent event) {
-    }
 
-    @FXML
-    private void gerertache(ActionEvent event) {
-    }
-
-    @FXML
-    private void gererequipe(ActionEvent event) {
-    }
-
-    @FXML
-    private void gererprofil(ActionEvent event) {
-    }
-
-    @FXML
     private void gerernotification(ActionEvent event) {
          try {
             
@@ -339,6 +324,10 @@ public class DemanderesponsableController implements Initializable {
         
         
         
+    }
+
+    @FXML
+    private void bttraitee(ActionEvent event) {
     }
 
    
