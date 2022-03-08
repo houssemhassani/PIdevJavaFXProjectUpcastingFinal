@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane id="AnchorPane" prefHeight="765.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MenuUserController">
+   <children>
+      <BorderPane prefHeight="600.0" prefWidth="875.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="65.0" prefWidth="200.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane layoutX="60.0" layoutY="20.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #032d40;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fx:id="Exit" fitHeight="22.0" fitWidth="22.0" layoutX="1018.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/exit.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Label fx:id="Menu" layoutX="14.0" layoutY="35.0" text="MENU" textFill="#b7b7b7">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/menu1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="MenuBack" layoutX="14.0" layoutY="34.0" text="MENU" textFill="#b7b7b7">
+                     <graphic>
+                        <ImageView fx:id="MenuClose" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/menu1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <HBox layoutX="105.0" layoutY="25.0" prefHeight="40.0" prefWidth="805.0">
+                     <children>
+                        <Button fx:id="gererprofil" mnemonicParsing="false" onAction="#gererprofil" prefHeight="45.0" prefWidth="141.0" text="Gérer Profil">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/add1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="gererpublication" mnemonicParsing="false" onAction="#gererpublication" prefHeight="50.0" prefWidth="172.0" text="Gérer Publication">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/data1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="gererreclamation" mnemonicParsing="false" onAction="#gererreclamation" prefHeight="52.0" prefWidth="141.0" text="Gérer Réclamation">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/data1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="gererdemande" mnemonicParsing="false" onAction="#gererdemande" prefHeight="45.0" prefWidth="141.0" text="Gérer Demande">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/data1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane fx:id="slider" prefHeight="362.0" prefWidth="176.0" style="-fx-background-color: #0A4969;" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutY="46.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
+                     <children>
+                        <AnchorPane prefHeight="234.0" prefWidth="148.0" />
+                     </children>
+                  </VBox>
+                  <Label fx:id="nomlabel" layoutX="14.0" layoutY="14.0" textFill="#eeecec" />
+               </children>
+            </AnchorPane>
+         </left>
+         <bottom>
+            <AnchorPane prefHeight="48.0" prefWidth="869.0" style="-fx-background-color: #0A4969;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="close" layoutX="934.0" layoutY="5.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="106.0" text="Fermer" />
+               </children>
+            </AnchorPane>
+         </bottom>
+         <center>
+            <SplitPane dividerPositions="0.3881278538812785" BorderPane.alignment="CENTER">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="266.0">
+                     <children>
+                        <ComboBox fx:id="cbService" layoutX="95.0" layoutY="297.0" prefHeight="31.0" prefWidth="195.0" />
+                        <ComboBox fx:id="cbSecteur" layoutX="95.0" layoutY="369.0" prefHeight="31.0" prefWidth="192.0" />
+                        <Label layoutX="24.0" layoutY="302.0" text="Service" />
+                        <Label layoutX="22.0" layoutY="374.0" text="Secteur" />
+                        <Button layoutX="197.0" layoutY="474.0" mnemonicParsing="false" onAction="#getComboBoxInfo" prefHeight="31.0" prefWidth="91.0" text="Aller" />
+                        <ImageView fx:id="tribunal" cache="true" fitHeight="200.0" fitWidth="196.0" layoutX="60.0" layoutY="65.0">
+                           <image>
+                              <Image url="@Tribunal.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="municipalite" cache="true" fitHeight="168.0" fitWidth="200.0" layoutX="58.0" layoutY="71.0">
+                           <image>
+                              <Image url="@municipalité.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <WebView fx:id="wvUser" layoutX="15.0" layoutY="14.0" prefHeight="626.0" prefWidth="505.0" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

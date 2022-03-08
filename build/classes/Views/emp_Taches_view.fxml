@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="522.0" prefWidth="964.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Emp_Taches_viewController">
+   <children>
+      <TableView fx:id="taches_view_table" layoutX="31.0" layoutY="44.0" prefHeight="427.0" prefWidth="896.0">
+         <columns>
+            <TableColumn fx:id="id_tache" prefWidth="122.0" text="ID_Tache" />
+            <TableColumn fx:id="num_tache" prefWidth="122.0" text="NUM" />
+            <TableColumn fx:id="nom_tache" prefWidth="122.0" text="NOM" />
+            <TableColumn fx:id="emp_id" prefWidth="122.0" text="Emp affecté ID" />
+            <TableColumn fx:id="temps_aloué" prefWidth="122.0" text="temps aloué" />
+            <TableColumn fx:id="etat_tache" prefWidth="122.0" text="etat tache" />
+            <TableColumn fx:id="importance" prefWidth="122.0" text="importance" />
+         </columns>
+      </TableView>
+      <Button fx:id="EXIT_Button" layoutX="31.0" layoutY="478.0" mnemonicParsing="false" onAction="#EXIT" text="Exit" />
+      <Button layoutX="755.0" layoutY="478.0" mnemonicParsing="false" onAction="#modifier_etat_tache" text="Marquer tache terminé" />
+      <Label layoutX="36.0" layoutY="13.0" text="Taches affecté(s) a l'emploé(e) :" />
+      <Label fx:id="nomlabel" layoutX="258.0" layoutY="13.0" textFill="#210a97">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+   </children>
+</AnchorPane>
